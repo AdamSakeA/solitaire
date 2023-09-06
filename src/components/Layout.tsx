@@ -20,7 +20,7 @@ const Layout: FC<LayoutProps> = ({ title, children }) => {
       </Head>
       <Navigation />
       <main
-        className={`${inter.className} container pt-[50px] px-[20px] md:px-[100px] xl:mx-auto bg-gray-100`}
+        className={`${inter.className} container py-[50px] px-[20px] md:px-[100px] xl:mx-auto bg-gray-100`}
       >
         {children}
       </main>

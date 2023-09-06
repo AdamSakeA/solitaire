@@ -27,16 +27,15 @@ export default function RegisterModal({ toggle, setMessage }: RegisterAttributes
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    handleToggle();
     registerUserMutation.mutate(formData, {
       onSuccess: async () => {
+        handleToggle();
         setMessage("Success Register User");
       },
       onError: async () => {
-        setMessage("Error Register User");
-      },
-      onSettled: () => {
         handleToggle();
+
+        setMessage("Error Register User");
       },
     });
   };
