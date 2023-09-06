@@ -17,6 +17,7 @@ export default function UserPage() {
   };
 
   const handleRemoveAuth = () => {
+    RemoveAuth();
     setMessage("Success Remove Auth");
   };
 
@@ -27,7 +28,7 @@ export default function UserPage() {
       <div className="my-[0px]">
         <div className="flex justify-between">
           <h1 className=" font-bold text-4xl text-gray-700">User List</h1>
-          {auth && auth?.id ? (
+          {auth?.token ? (
             <Button onClick={handleRemoveAuth} className="px-[20px]">
               Remove Auth
             </Button>

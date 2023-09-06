@@ -25,9 +25,20 @@ export default function RegisterModal({ toggle, setMessage }: RegisterAttributes
     }));
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    await registerUserMutation.mutateAsync(formData);
+    handleToggle();
+    registerUserMutation.mutate(formData, {
+      onSuccess: async () => {
+        setMessage("Success Register User");
+      },
+      onError: async () => {
+        setMessage("Error Register User");
+      },
+      onSettled: () => {
+        handleToggle();
+      },
+    });
   };
 
   const handleToggle = () => {
@@ -79,9 +90,7 @@ export default function RegisterModal({ toggle, setMessage }: RegisterAttributes
               />
             </div>
 
-            <Button className="px-5 mt-5 " onClick={handleToggle}>
-              Submit
-            </Button>
+            <Button className="px-5 mt-5 ">Submit</Button>
           </form>
         </div>
       </FadeUp>
